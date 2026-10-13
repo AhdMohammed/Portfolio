@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>Ahd Mohamed Abdelsalam — Motion & Graphic Designer</title>
+  <meta name="description" content="Portfolio of Ahd Mohamed Abdelsalam — Motion & Graphic Designer. Turning ideas into engaging visual stories through motion graphics, 2D animation, branding, and graphic design.">
+  <meta name="keywords" content="Ahd Mohamed, Motion Graphics, Graphic Designer, 2D Animation, Visual Storytelling, Branding, Egypt">
+  <meta name="author" content="Ahd Mohamed Abdelsalam">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ahd Mohamed Abdelsalam — Motion & Graphic Designer">
+  <meta property="og:description" content="I turn ideas into visual stories that move. Creative motion graphics, 2D animation, and graphic design portfolio.">
+  <meta property="og:image" content="assets/B&W background.jpg">
+
+  <!-- Favicon / SVG Icon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237C3AED'/><text x='16' y='22' font-family='sans-serif' font-weight='900' font-size='18' fill='%23FAF8FF' text-anchor='middle'>AH</text></svg>">
+
+  <!-- Primary Font: Clean Arial / Helvetica with Cairo for Arabic support -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-dark">
+  <!-- Interactive Background Canvas & Ambient Glows -->
+  <div class="ambient-glow glow-top" aria-hidden="true"></div>
+  <div class="ambient-glow glow-middle" aria-hidden="true"></div>
+  <div class="ambient-glow glow-bottom" aria-hidden="true"></div>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Custom Cursor Elements (Desktop only) -->
+  <div class="custom-cursor" id="cursor-dot" aria-hidden="true"></div>
+  <div class="custom-cursor" id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- SKIP TO CONTENT (A11y) -->
+  <a href="#main-content" class="skip-link" data-i18n="skipLink">Skip to main content</a>
+
+  <!-- SITE HEADER / NAVIGATION -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <!-- Typographic Wordmark -->
+      <a href="#home" class="brand-wordmark" aria-label="Ahd Mohamed Abdelsalam Portfolio Home">
+        <span class="wordmark-monogram">AH</span>
+        <span class="wordmark-full">AHD<span class="wordmark-dot">.</span></span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" id="nav-menu" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#home" class="nav-link active" data-i18n="nav.home">Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
+          <li class="nav-item"><a href="#education" class="nav-link" data-i18n="nav.education">Education</a></li>
+          <li class="nav-item"><a href="#skills" class="nav-link" data-i18n="nav.skills">Skills</a></li>
+          <li class="nav-item"><a href="#experience" class="nav-link" data-i18n="nav.experience">Experience</a></li>
+          <li class="nav-item"><a href="#services" class="nav-link" data-i18n="nav.services">Services</a></li>
+          <li class="nav-item"><a href="#projects" class="nav-link" data-i18n="nav.projects">Projects</a></li>
+          <li class="nav-item"><a href="#feedback" class="nav-link" data-i18n="nav.feedback">Feedback</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Utility Controls: Language & Theme Switches -->
+      <div class="header-actions">
+        <!-- Language Switcher -->
+        <button type="button" class="ctrl-btn lang-toggle" id="lang-toggle" aria-label="Switch Language to Arabic" title="Toggle English / Arabic">
+          <span class="lang-code en" aria-hidden="true">EN</span>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <span class="lang-code ar" aria-hidden="true">عربي</span>
+        </button>
+
+        <!-- Theme Switcher -->
+        <button type="button" class="ctrl-btn theme-toggle" id="theme-toggle" aria-label="Toggle Light and Dark Mode" title="Toggle theme">
+          <svg class="theme-icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="ctrl-btn mobile-menu-btn" id="mobile-menu-btn" aria-label="Open Navigation Menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-nav-backdrop" id="mobile-backdrop" aria-hidden="true"></div>
+  <aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="mobile-nav-header">
+      <div class="mobile-brand">
+        <span class="wordmark-monogram">AH</span>
+        <span class="wordmark-full">AHD<span class="wordmark-dot">.</span></span>
+      </div>
+      <button type="button" class="ctrl-btn close-drawer-btn" id="close-drawer-btn" aria-label="Close Navigation Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <nav class="mobile-nav-body">
+      <ul class="mobile-nav-list">
+        <li><a href="#home" class="mobile-nav-link" data-i18n="nav.home">Home</a></li>
+        <li><a href="#about" class="mobile-nav-link" data-i18n="nav.about">About</a></li>
+        <li><a href="#education" class="mobile-nav-link" data-i18n="nav.education">Education</a></li>
+        <li><a href="#skills" class="mobile-nav-link" data-i18n="nav.skills">Skills</a></li>
+        <li><a href="#experience" class="mobile-nav-link" data-i18n="nav.experience">Experience</a></li>
+        <li><a href="#services" class="mobile-nav-link" data-i18n="nav.services">Services</a></li>
+        <li><a href="#projects" class="mobile-nav-link" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="#feedback" class="mobile-nav-link" data-i18n="nav.feedback">Feedback</a></li>
+        <li><a href="#contact" class="mobile-nav-link" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-nav-footer">
+      <div class="mobile-status-pill">
+        <span class="status-indicator"></span>
+        <span data-i18n="hero.available">Available for Freelance</span>
+      </div>
+      <div class="mobile-lang-row">
+        <button type="button" class="mobile-lang-btn active" data-lang="en">English</button>
+        <button type="button" class="mobile-lang-btn" data-lang="ar">العربية</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main id="main-content">
+
+    <!-- ======================================================== -->
+    <!-- SECTION 01 — HOME / HERO                                 -->
+    <!-- ======================================================== -->
+    <section class="section hero-section" id="home" aria-labelledby="hero-title">
+      <div class="container hero-container">
+        
+        <!-- Left / Primary Content Column -->
+        <div class="hero-content">
+          <!-- Availability Tag -->
+          <div class="hero-status-tag reveal-fade">
+            <span class="status-pulse" aria-hidden="true"></span>
+            <span class="status-text" data-i18n="hero.available">Available for Freelance</span>
+          </div>
+
+          <!-- Professional Sub-label -->
+          <p class="hero-eyebrow reveal-fade" data-i18n="hero.title">Motion &amp; Graphic Designer</p>
+
+          <!-- Oversized Hero Title (Name) -->
+          <h1 class="hero-name reveal-split" id="hero-title">
+            <span class="hero-name-first" data-i18n="hero.nameFirst">Ahd</span>
+            <span class="hero-name-middle" data-i18n="hero.nameMiddle">Mohamed</span>
+            <span class="hero-name-last" data-i18n="hero.nameLast">Abdelsalam</span>
+          </h1>
+
+          <!-- Tagline -->
+          <p class="hero-tagline reveal-fade" data-i18n="hero.tagline">
+            “I turn ideas into visual stories that move.”
+          </p>
+
+          <!-- Supporting Description -->
+          <p class="hero-description reveal-fade" data-i18n="hero.desc">
+            Creative Motion &amp; Graphic Designer with two years of experience, focused on visual storytelling, creative concepts, and bringing ideas to life through motion and design.
+          </p>
+
+          <!-- Call to Action Buttons -->
+          <div class="hero-actions reveal-fade">
+            <a href="#projects" class="btn btn-primary" id="hero-btn-work">
+              <span class="btn-text" data-i18n="hero.btnWork">View My Work</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="#contact" class="btn btn-secondary" id="hero-btn-contact">
+              <span class="btn-text" data-i18n="hero.btnContact">Let's Work Together</span>
+              <span class="btn-sparkle" aria-hidden="true">✦</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right / Dedicated Portrait Composition -->
+        <div class="hero-portrait-wrapper reveal-portrait">
+          <div class="portrait-stage">
+            <!-- Decorative Viewfinder Brackets -->
+            <div class="viewfinder-corner tl" aria-hidden="true"></div>
+            <div class="viewfinder-corner tr" aria-hidden="true"></div>
+            <div class="viewfinder-corner bl" aria-hidden="true"></div>
+            <div class="viewfinder-corner br" aria-hidden="true"></div>
+
+            <!-- Glowing ambient backplate -->
+            <div class="portrait-glow" aria-hidden="true"></div>
+
+            <!-- Main Artistic Frame -->
+            <div class="portrait-frame" id="portrait-frame">
+              <!-- Actual image element pointing to documented path -->
+              <img 
+                src="assets/profile.png" 
+                alt="Ahd Mohamed Abdelsalam — Portrait" 
+                class="portrait-img" 
+                id="portrait-img"
+                loading="eager"
+              >
+
+              <!-- Designed Artistic Fallback Placeholder (Active when photo is absent) -->
+              <div class="portrait-art-fallback" id="portrait-fallback" aria-label="Reserved Portrait Space for Ahd Mohamed Abdelsalam">
+                <div class="fallback-graphic" aria-hidden="true">
+                  <div class="graphic-rings"></div>
+                  <div class="graphic-grid"></div>
+                  <div class="monogram-emblem">AM</div>
+                </div>
+                <div class="fallback-info">
+                  <span class="fallback-rec-badge" aria-hidden="true">
+                    <span class="rec-dot"></span> FRAME // RESERVED
+                  </span>
+                  <p class="fallback-name" data-i18n="hero.portraitReserved">PORTRAIT RESERVED</p>
+                  <p class="fallback-sub">AHD MOHAMED ABDELSALAM</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Editorial Caption -->
+            <div class="portrait-meta-tag" aria-hidden="true">
+              <span class="meta-dot"></span>
+              <span class="meta-label">CREATIVE IDENTITY • 2026</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Scroll Down Cue -->
+      <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
+        <span class="scroll-mouse" aria-hidden="true">
+          <span class="scroll-wheel"></span>
+        </span>
+      </a>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- KINETIC MARQUEE STRIP (Editorial Motion Divider)         -->
+    <!-- ======================================================== -->
+    <div class="ticker-strip" aria-hidden="true">
+      <div class="ticker-track">
+        <span class="ticker-item">MOTION GRAPHICS</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">VISUAL STORYTELLING</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">2D ANIMATION</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">GRAPHIC DESIGN</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">BRAND IDENTITY</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">CREATIVE CONCEPTS</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">LOGO ANIMATION</span>
+        <span class="ticker-sep">✦</span>
+        <!-- Duplicated for continuous marquee -->
+        <span class="ticker-item">MOTION GRAPHICS</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">VISUAL STORYTELLING</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">2D ANIMATION</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">GRAPHIC DESIGN</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">BRAND IDENTITY</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">CREATIVE CONCEPTS</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">LOGO ANIMATION</span>
+        <span class="ticker-sep">✦</span>
+      </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- SECTION 02 — ABOUT ME                                    -->
+    <!-- ======================================================== -->
+    <section class="section about-section" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="section-header reveal-up">
+          <div class="section-index" aria-hidden="true">02 // PROFILE</div>
+          <p class="section-eyebrow" data-i18n="about.sectionTitle">Visual Storyteller &amp; Designer</p>
+          <h2 class="section-title" id="about-heading" data-i18n="about.mainHeading">Turning Ideas into Visual Stories</h2>
+          <p class="section-subtitle" data-i18n="about.subtitle">Combining creativity, storytelling, and attention to detail</p>
+        </div>
+
+        <!-- Editorial Split Layout -->
+        <div class="about-grid">
+          <!-- Text Narrative -->
+          <div class="about-narrative reveal-up">
+            <div class="narrative-lead" data-i18n="about.descP1">
+              I’m Ahd Mohamed, a Motion &amp; Graphic Designer with a passion for turning ideas into engaging visual stories.
+            </div>
+            <div class="narrative-body" data-i18n="about.descP2">
+              With two years of experience in design, I focus on creating visuals that combine creativity, storytelling, and attention to detail.
+            </div>
+            <div class="narrative-body" data-i18n="about.descP3">
+              I enjoy exploring different styles, from minimal and modern designs to colorful, experimental, typographic, and 3D visuals, always aiming to create work that feels both meaningful and memorable.
+            </div>
+            <div class="about-quote-box">
+              <span class="quote-symbol" aria-hidden="true">“</span>
+              <p class="quote-text" data-i18n="about.quote">Turning ideas into visual stories that move.</p>
+            </div>
+          </div>
+
+          <!-- What I Bring (4 Distinctive Visual Elements) -->
+          <div class="about-strengths">
+            <h3 class="strengths-title" data-i18n="about.whatIBring">What I Bring</h3>
+            <div class="strengths-grid">
+              
+              <!-- Strength 01 -->
+              <article class="strength-card reveal-up" style="--st-delay: 0.1s;">
+                <div class="strength-num" aria-hidden="true">01</div>
+                <h4 class="strength-heading" data-i18n="about.s1Title">Creative Thinking</h4>
+                <p class="strength-desc" data-i18n="about.s1Desc">Turning ideas into engaging visual concepts.</p>
+                <div class="strength-bar" aria-hidden="true"></div>
+              </article>
+
+              <!-- Strength 02 -->
+              <article class="strength-card reveal-up" style="--st-delay: 0.2s;">
+                <div class="strength-num" aria-hidden="true">02</div>
+                <h4 class="strength-heading" data-i18n="about.s2Title">Attention to Detail</h4>
+                <p class="strength-desc" data-i18n="about.s2Desc">Paying close attention to the details and requirements that matter to each client.</p>
+                <div class="strength-bar" aria-hidden="true"></div>
+              </article>
+
+              <!-- Strength 03 -->
+              <article class="strength-card reveal-up" style="--st-delay: 0.3s;">
+                <div class="strength-num" aria-hidden="true">03</div>
+                <h4 class="strength-heading" data-i18n="about.s3Title">Storytelling</h4>
+                <p class="strength-desc" data-i18n="about.s3Desc">Creating visuals that communicate ideas through strong visual storytelling.</p>
+                <div class="strength-bar" aria-hidden="true"></div>
+              </article>
+
+              <!-- Strength 04 -->
+              <article class="strength-card reveal-up" style="--st-delay: 0.4s;">
+                <div class="strength-num" aria-hidden="true">04</div>
+                <h4 class="strength-heading" data-i18n="about.s4Title">Commitment</h4>
+                <p class="strength-desc" data-i18n="about.s4Desc">Respecting deadlines and staying committed to delivering quality work.</p>
+                <div class="strength-bar" aria-hidden="true"></div>
+              </article>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- SECTION 03 — EDUCATION                                   -->
+    <!-- ======================================================== -->
+    <section class="section education-section" id="education" aria-labelledby="edu-heading">
+      <div class="container">
+        
+        <div class="section-header reveal-up">
+          <div class="section-index" aria-hidden="true">03 // FOUNDATION</div>
+          <h2 class="section-title" id="edu-heading" data-i18n="edu.heading">Education</h2>
+          <p class="section-subtitle" data-i18n="edu.supportingLabel">Academic foundation</p>
+        </div>
+
+        <div class="edu-card-wrapper reveal-up">
+          <div class="edu-card">
+            <div class="edu-icon-col" aria-hidden="true">
+              <div class="edu-emblem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="edu-info-col">
+              <span class="edu-tag" data-i18n="edu.supportingLabel">Academic foundation</span>
+              <h3 class="edu-title" data-i18n="edu.entry">Faculty of Oral and Dental Medicine</h3>
+              <p class="edu-note" data-i18n="edu.note">Dedicated academic pursuit fostering meticulous precision, discipline, and visual depth.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- SECTION 04 — SKILLS                                      -->
+    <!-- ======================================================== -->
+    <section class="section skills-section" id="skills" aria-labelledby="skills-heading">
+      <div class="container">
+
+        <div class="section-header reveal-up">
+          <div class="section-index" aria-hidden="true">04 // CAPABILITIES</div>
+          <h2 class="section-title" id="skills-heading" data-i18n="skills.heading">Skills</h2>
+          <p class="section-subtitle" data-i18n="skills.supportingDesc">Creative disciplines, motion techniques, and software tools</p>
+        </div>
+
+        <!-- Overall Level Banner -->
+        <div class="skills-level-banner reveal-up">
+          <div class="level-label-group">
+            <span class="level-caption" data-i18n="skills.levelCaption">Overall Skill Level</span>
+            <span class="level-badge" data-i18n="skills.levelBadge">Intermediate</span>
+          </div>
+          <div class="level-decorative-nodes" aria-hidden="true">
+            <span class="node active"></span>
+            <span class="node active"></span>
+            <span class="node active"></span>
+            <span class="node inactive"></span>
+          </div>
+        </div>
+
+        <div class="skills-layout-grid">
+          
+          <!-- Column 1: Creative & Technical Disciplines Wall -->
+          <div class="skills-block disciplines-block reveal-up">
+            <div class="block-header">
+              <h3 class="block-title" data-i18n="skills.disciplinesTitle">Creative &amp; Technical Disciplines</h3>
+              <span class="block-count">15 Disciplines</span>
+            </div>
+            
+            <div class="disciplines-cloud" role="list">
+              <span class="discipline-tag highlight" role="listitem" data-i18n="skills.d1">Motion Graphics</span>
+              <span class="discipline-tag" role="listitem" data-i18n="skills.d2">2D Animation</span>
+              <span class="discipline-tag" role="listitem" data-i18n="skills.d3">Logo Animation</span>
+              <span class="discipline-tag highlight" role="listitem" data-i18n="skills.d4">Graphic Design</span>
+              <span class="discipline-tag" role="listitem" data-i18n="skills.d5">Branding</span>
+              <span class="discipline-tag" role="listitem" data-i18n="skills.d6">Visual Identity</span>
+              <span class="discipline-tag" role="listitem" data-i18n="skills.d7">Logo Design</span>
+              <span class="discipline-tag" role="listitem" data-i18n="skills.d8">Social Media Design</span>
+              <span class="discipline-tag" role="listitem" data-i18n="skills.d9">Poster Design</span>
+              <span class="discipline-tag" role="listitem" data-i18n="skills.d10">Illustration</span>
+              <span class="discipline-tag" role="listitem" data-i18n="skills.d11">Storyboarding</span>
+              <span class="discipline-tag" role="listitem" data-i18n="skills.d12">Video Editing</span>
+              <span class="discipline-tag highlight" role="listitem" data-i18n="skills.d13">Creative Concept Development</span>
+              <span class="discipline-tag" role="listitem" data-i18n="skills.d14">Typography</span>
+              <span class="discipline-tag highlight" role="listitem" data-i18n="skills.d15">Visual Storytelling</span>
+            </div>
+          </div>
+
+          <!-- Column 2: Software Proficiency Cards -->
+          <div class="skills-block software-block reveal-up">
+            <div class="block-header">
+              <h3 class="block-title" data-i18n="skills.softwareTitle">Software Toolkit</h3>
+              <span class="block-count">Adobe Creative Cloud</span>
+            </div>
+
+            <div class="software-list">
+              <!-- After Effects -->
+              <article class="software-card" style="--sw-accent: #9999FF;">
+                <div class="software-badge-icon" aria-hidden="true">Ae</div>
+                <div class="software-info">
+                  <div class="software-name-row">
+                    <h4 class="software-name">Adobe After Effects</h4>
+                    <span class="software-level" data-i18n="skills.intermediate">Intermediate</span>
+                  </div>
+                  <div class="software-meter" aria-hidden="true">
+                    <div class="meter-bar" style="width: 72%;"></div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Premiere Pro -->
+              <article class="software-card" style="--sw-accent: #EA77FF;">
+                <div class="software-badge-icon" aria-hidden="true">Pr</div>
+                <div class="software-info">
+                  <div class="software-name-row">
+                    <h4 class="software-name">Adobe Premiere Pro</h4>
+                    <span class="software-level" data-i18n="skills.intermediate">Intermediate</span>
+                  </div>
+                  <div class="software-meter" aria-hidden="true">
+                    <div class="meter-bar" style="width: 70%;"></div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Illustrator -->
+              <article class="software-card" style="--sw-accent: #FF9A00;">
+                <div class="software-badge-icon" aria-hidden="true">Ai</div>
+                <div class="software-info">
+                  <div class="software-name-row">
+                    <h4 class="software-name">Adobe Illustrator</h4>
+                    <span class="software-level" data-i18n="skills.intermediate">Intermediate</span>
+                  </div>
+                  <div class="software-meter" aria-hidden="true">
+                    <div class="meter-bar" style="width: 75%;"></div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Photoshop -->
+              <article class="software-card" style="--sw-accent: #31A8FF;">
+                <div class="software-badge-icon" aria-hidden="true">Ps</div>
+                <div class="software-info">
+                  <div class="software-name-row">
+                    <h4 class="software-name">Adobe Photoshop</h4>
+                    <span class="software-level" data-i18n="skills.intermediate">Intermediate</span>
+                  </div>
+                  <div class="software-meter" aria-hidden="true">
+                    <div class="meter-bar" style="width: 74%;"></div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- SECTION 05 — WORK EXPERIENCE                             -->
+    <!-- ======================================================== -->
+    <section class="section experience-section" id="experience" aria-labelledby="exp-heading">
+      <div class="container">
+
+        <div class="section-header reveal-up">
+          <div class="section-index" aria-hidden="true">05 // TRAJECTORY</div>
+          <h2 class="section-title" id="exp-heading" data-i18n="exp.heading">Work Experience</h2>
+          <p class="section-subtitle" data-i18n="exp.supportingDesc">Professional design positions and creative practice</p>
+        </div>
+
+        <div class="timeline-container">
+          
+          <!-- Experience 01 -->
+          <article class="timeline-card reveal-up">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-header-row">
+              <div class="timeline-position-group">
+                <span class="timeline-status-badge present" data-i18n="exp.statusPresent">Present</span>
+                <h3 class="timeline-position" data-i18n="exp.exp1Role">Graphic Designer</h3>
+                <h4 class="timeline-org" data-i18n="exp.exp1Org">DEPI — Digital Egypt Pioneers Initiative</h4>
+              </div>
+            </div>
+            <p class="timeline-description" data-i18n="exp.exp1Desc">
+              Working as a Graphic Designer within a creative team, developing visual content and exploring different forms of motion and graphic design.
+            </p>
+            <div class="timeline-responsibilities">
+              <span class="resp-label" data-i18n="exp.responsibilitiesLabel">Key Responsibilities:</span>
+              <ul class="resp-tags">
+                <li data-i18n="skills.d4">Graphic Design</li>
+                <li data-i18n="skills.d7">Logo Design</li>
+                <li data-i18n="skills.d1">Motion Graphics</li>
+                <li data-i18n="skills.d3">Logo Animation</li>
+                <li data-i18n="skills.d13">Creative Concept Development</li>
+                <li data-i18n="exp.collab">Team Collaboration</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Experience 02 -->
+          <article class="timeline-card reveal-up">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-header-row">
+              <div class="timeline-position-group">
+                <span class="timeline-status-badge freelance" data-i18n="exp.statusFreelance">Freelance</span>
+                <h3 class="timeline-position" data-i18n="exp.exp2Role">Freelance Motion &amp; Graphic Designer</h3>
+                <h4 class="timeline-org" data-i18n="exp.exp2Org">Independent Design Practice</h4>
+              </div>
+            </div>
+            <p class="timeline-description" data-i18n="exp.exp2Desc">
+              Working independently with different clients to create creative visual solutions across graphic design and motion.
+            </p>
+            <div class="timeline-clients-pref">
+              <span class="resp-label" data-i18n="exp.preferredClientsLabel">Preferred Client Types:</span>
+              <ul class="client-type-tags">
+                <li data-i18n="exp.clientCompanies">Companies &amp; Organizations</li>
+                <li data-i18n="exp.clientBrands">Personal Brands</li>
+                <li data-i18n="exp.clientCreators">Creators</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- SECTION 06 — SERVICES                                    -->
+    <!-- ======================================================== -->
+    <section class="section services-section" id="services" aria-labelledby="services-heading">
+      <div class="container">
+
+        <div class="section-header reveal-up">
+          <div class="section-index" aria-hidden="true">06 // OFFERINGS</div>
+          <h2 class="section-title" id="services-heading" data-i18n="services.heading">Services</h2>
+          <p class="section-subtitle" data-i18n="services.supportingDesc">Specialized motion and design solutions</p>
+        </div>
+
+        <div class="services-grid">
+
+          <!-- Service 01: Core Focus (Strongest Visual Emphasis) -->
+          <article class="service-card service-hero reveal-up">
+            <div class="service-top-row">
+              <span class="service-cat-code">01 // CORE FOCUS</span>
+              <span class="service-highlight-pill" data-i18n="services.primaryFocus">Primary Focus</span>
+            </div>
+            <h3 class="service-title" data-i18n="services.s1Title">Motion Graphics</h3>
+            <p class="service-desc" data-i18n="services.s1Desc">Bringing ideas to life through engaging animation and visual storytelling.</p>
+            <div class="service-visual-cue" aria-hidden="true">
+              <span class="cue-wave"></span>
+              <span class="cue-wave"></span>
+              <span class="cue-wave"></span>
+            </div>
+          </article>
+
+          <!-- Service 02 -->
+          <article class="service-card reveal-up">
+            <div class="service-top-row">
+              <span class="service-cat-code">02 // ANIMATION</span>
+            </div>
+            <h3 class="service-title" data-i18n="services.s2Title">2D Animation</h3>
+            <p class="service-desc" data-i18n="services.s2Desc">Creating expressive animated visuals for digital content, campaigns, and brands.</p>
+          </article>
+
+          <!-- Service 03 -->
+          <article class="service-card reveal-up">
+            <div class="service-top-row">
+              <span class="service-cat-code">03 // MOTION ID</span>
+            </div>
+            <h3 class="service-title" data-i18n="services.s3Title">Logo Animation</h3>
+            <p class="service-desc" data-i18n="services.s3Desc">Turning static logos into memorable animated brand moments.</p>
+          </article>
+
+          <!-- Service 04 -->
+          <article class="service-card reveal-up">
+            <div class="service-top-row">
+              <span class="service-cat-code">04 // BRANDING</span>
+            </div>
+            <h3 class="service-title" data-i18n="services.s4Title">Brand Identity</h3>
+            <p class="service-desc" data-i18n="services.s4Desc">Building cohesive visual identities that communicate a brand’s personality.</p>
+          </article>
+
+          <!-- Service 05 -->
+          <article class="service-card reveal-up">
+            <div class="service-top-row">
+              <span class="service-cat-code">05 // LOGO</span>
+            </div>
+            <h3 class="service-title" data-i18n="services.s5Title">Logo Design</h3>
+            <p class="service-desc" data-i18n="services.s5Desc">Creating distinctive and meaningful logos tailored to each brand.</p>
+          </article>
+
+          <!-- Service 06 -->
+          <article class="service-card reveal-up">
+            <div class="service-top-row">
+              <span class="service-cat-code">06 // SOCIAL</span>
+            </div>
+            <h3 class="service-title" data-i18n="services.s6Title">Social Media Design</h3>
+            <p class="service-desc" data-i18n="services.s6Desc">Designing engaging visual content that helps brands communicate with their audience.</p>
+          </article>
+
+          <!-- Service 07 -->
+          <article class="service-card reveal-up">
+            <div class="service-top-row">
+              <span class="service-cat-code">07 // VIDEO</span>
+            </div>
+            <h3 class="service-title" data-i18n="services.s7Title">Video Editing</h3>
+            <p class="service-desc" data-i18n="services.s7Desc">Crafting dynamic and visually engaging videos for digital platforms.</p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- SECTION 07 — PROJECTS / SELECTED WORK                    -->
+    <!-- ======================================================== -->
+    <section class="section projects-section" id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+
+        <div class="section-header reveal-up">
+          <div class="section-index" aria-hidden="true">07 // PORTFOLIO</div>
+          <h2 class="section-title" id="projects-heading" data-i18n="projects.heading">Selected Work</h2>
+          <p class="section-subtitle" data-i18n="projects.supportingDesc">A selection of visual explorations across graphic design, motion, and creative storytelling.</p>
+        </div>
+
+        <div class="projects-gallery">
+
+          <!-- PROJECT 01: B&W background.jpg -->
+          <article class="project-card project-portrait-card reveal-up" data-project-id="p1">
+            <div class="project-media-frame">
+              <img 
+                src="assets/B&W background.jpg" 
+                alt="Editorial Portrait Composition — Photo Editing & Visual Depth" 
+                class="project-img"
+                loading="lazy"
+              >
+              <div class="project-overlay">
+                <button type="button" class="btn-expand-project" aria-label="Open Editorial Portrait Composition details" data-open-modal="p1">
+                  <span class="expand-icon" aria-hidden="true">+</span>
+                  <span class="expand-label" data-i18n="projects.viewDetails">View Artwork</span>
+                </button>
+              </div>
+              <span class="project-index-pill" aria-hidden="true">01</span>
+            </div>
+            <div class="project-meta-box">
+              <span class="project-cat" data-i18n="projects.p1Cat">Visual Composition / Image Editing</span>
+              <h3 class="project-title" data-i18n="projects.p1Title">Editorial Portrait Composition</h3>
+              <p class="project-desc" data-i18n="projects.p1Desc">
+                An editorial-style portrait composition combining a framed vertical photograph, a monochrome blurred background, and contrasting visual depth to create a striking photographic presentation.
+              </p>
+            </div>
+          </article>
+
+          <!-- PROJECT 02: Poster.jpg -->
+          <article class="project-card project-portrait-card reveal-up" data-project-id="p2">
+            <div class="project-media-frame">
+              <img 
+                src="assets/Poster.jpg" 
+                alt="EMPIRE — Event Poster Design with expressive typography" 
+                class="project-img"
+                loading="lazy"
+              >
+              <div class="project-overlay">
+                <button type="button" class="btn-expand-project" aria-label="Open EMPIRE Event Poster Design details" data-open-modal="p2">
+                  <span class="expand-icon" aria-hidden="true">+</span>
+                  <span class="expand-label" data-i18n="projects.viewDetails">View Artwork</span>
+                </button>
+              </div>
+              <span class="project-index-pill" aria-hidden="true">02</span>
+            </div>
+            <div class="project-meta-box">
+              <span class="project-cat" data-i18n="projects.p2Cat">Graphic Design / Poster Design</span>
+              <h3 class="project-title" data-i18n="projects.p2Title">EMPIRE — Event Poster Design</h3>
+              <p class="project-desc" data-i18n="projects.p2Desc">
+                An expressive event poster exploring oversized typography, layered text, monochromatic contrast, dynamic composition, and photographic cutouts to create a bold nightlife visual.
+              </p>
+            </div>
+          </article>
+
+          <!-- PROJECT 03: Crazy Carrot.mp4 -->
+          <article class="project-card project-video-card reveal-up" data-project-id="p3">
+            <div class="project-media-frame video-frame">
+              <!-- Actual supplied video -->
+              <video 
+                class="project-video-preview" 
+                id="carrot-preview-video"
+                preload="metadata" 
+                playsinline 
+                controls
+                aria-label="Crazy Carrot — Character Animation Video Preview"
+              >
+                <source src="assets/Crazy Carrot.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay-action">
+                <button type="button" class="btn-expand-project" aria-label="Open Crazy Carrot Animation details in modal" data-open-modal="p3">
+                  <span class="expand-icon" aria-hidden="true">⤢</span>
+                  <span class="expand-label" data-i18n="projects.fullscreenVideo">Expanded View</span>
+                </button>
+              </div>
+              <span class="project-index-pill" aria-hidden="true">03 // MOTION</span>
+            </div>
+            <div class="project-meta-box">
+              <span class="project-cat" data-i18n="projects.p3Cat">Motion Graphics / 2D Animation</span>
+              <h3 class="project-title" data-i18n="projects.p3Title">Crazy Carrot — Character Animation</h3>
+              <p class="project-desc" data-i18n="projects.p3Desc">
+                A playful cartoon animation featuring a friendly carrot character, colorful outdoor scenery, and expressive illustrated elements in a vibrant visual style.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- SECTION 08 — FEEDBACK                                    -->
+    <!-- ======================================================== -->
+    <section class="section feedback-section" id="feedback" aria-labelledby="feedback-heading">
+      <div class="container">
+
+        <div class="section-header reveal-up">
+          <div class="section-index" aria-hidden="true">08 // TESTIMONIALS</div>
+          <h2 class="section-title" id="feedback-heading" data-i18n="feedback.heading">Kind Words</h2>
+          <p class="feedback-disclaimer" data-i18n="feedback.disclaimer">
+            * Illustrative sample feedback demonstrating client collaborations and creative reception.
+          </p>
+        </div>
+
+        <div class="feedback-grid">
+
+          <!-- Feedback 01 -->
+          <article class="feedback-card reveal-up">
+            <div class="quote-mark" aria-hidden="true">“</div>
+            <blockquote class="feedback-text" data-i18n="feedback.f1">
+              “Working with Ahd was a great experience. She understood the creative direction quickly and transformed the idea into a strong visual result.”
+            </blockquote>
+            <div class="feedback-signature">
+              <div class="sig-line" aria-hidden="true"></div>
+              <span class="sig-label" data-i18n="feedback.f1Label">Sample Feedback 01</span>
+            </div>
+          </article>
+
+          <!-- Feedback 02 -->
+          <article class="feedback-card reveal-up">
+            <div class="quote-mark" aria-hidden="true">“</div>
+            <blockquote class="feedback-text" data-i18n="feedback.f2">
+              “Professional, creative, and committed to deadlines. Ahd brought a fresh perspective to the project and delivered an engaging visual result.”
+            </blockquote>
+            <div class="feedback-signature">
+              <div class="sig-line" aria-hidden="true"></div>
+              <span class="sig-label" data-i18n="feedback.f2Label">Sample Feedback 02</span>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- SECTION 09 — CONTACT / LET'S CONNECT                     -->
+    <!-- ======================================================== -->
+    <section class="section contact-section" id="contact" aria-labelledby="contact-heading">
+      <div class="container contact-container">
+
+        <div class="contact-card reveal-up">
+          <div class="contact-header">
+            <span class="contact-badge" data-i18n="contact.badge">Let's Connect</span>
+            <h2 class="contact-title" id="contact-heading" data-i18n="contact.heading">
+              Let’s Make Something Move.
+            </h2>
+            <p class="contact-subtitle" data-i18n="contact.sub">
+              Have an idea? Let’s turn it into a visual story.
+            </p>
+          </div>
+
+          <!-- Functional Action Buttons (Strictly No Visible Phone Number) -->
+          <div class="contact-cta-row">
+            <!-- WhatsApp Functional Link -->
+            <a 
+              href="https://wa.me/201142547578" 
+              class="btn btn-whatsapp" 
+              id="btn-whatsapp"
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Contact Ahd Mohamed on WhatsApp (opens in new tab)"
+            >
+              <svg class="cta-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.204 8.204 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24-1.42 0-2.82-.37-4.06-1.07l-.29-.17-3.02.79.81-2.94-.19-.3a8.216 8.216 0 0 1-1.26-4.37c0-4.54 3.7-8.24 8.24-8.24zm4.5 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.07-.39-2.03-1.25-.75-.67-1.26-1.5-1.4-1.76-.14-.25-.01-.39.11-.51.11-.11.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.43 1.03 2.6.13.17 1.78 2.71 4.3 3.8 2.53 1.08 2.53.72 2.98.68.45-.04 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29z"/>
+              </svg>
+              <span class="btn-text" data-i18n="contact.btnWhatsapp">Let's Talk on WhatsApp</span>
+            </a>
+
+            <!-- LinkedIn Functional Link -->
+            <a 
+              href="https://www.linkedin.com/in/ahd-mohamed-491626320?utm_source=share_via&utm_content=profile&utm_medium=member_android" 
+              class="btn btn-linkedin" 
+              id="btn-linkedin"
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Visit Ahd Mohamed's LinkedIn profile (opens in new tab)"
+            >
+              <svg class="cta-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+              </svg>
+              <span class="btn-text" data-i18n="contact.btnLinkedin">LinkedIn Profile</span>
+            </a>
+          </div>
+
+          <!-- Location Information (Strictly Egypt only) -->
+          <div class="contact-location-row">
+            <span class="location-pin" aria-hidden="true">📍</span>
+            <span class="location-text" data-i18n="contact.location">Egypt</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================== -->
+  <!-- SITE FOOTER                                              -->
+  <!-- ======================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      
+      <!-- Footer Brand Column -->
+      <div class="footer-col brand-col">
+        <a href="#home" class="brand-wordmark">
+          <span class="wordmark-monogram">AH</span>
+          <span class="wordmark-full">AHD<span class="wordmark-dot">.</span></span>
+        </a>
+        <p class="footer-title" data-i18n="footer.name">Ahd Mohamed Abdelsalam</p>
+        <p class="footer-role" data-i18n="footer.role">Motion &amp; Graphic Designer</p>
+      </div>
+
+      <!-- Footer Quick Links -->
+      <div class="footer-col links-col">
+        <span class="footer-col-title" data-i18n="footer.navigation">Navigation</span>
+        <ul class="footer-links">
+          <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+          <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+          <li><a href="#services" data-i18n="nav.services">Services</a></li>
+          <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Footer Connect Actions -->
+      <div class="footer-col connect-col">
+        <span class="footer-col-title" data-i18n="footer.connect">Connect</span>
+        <div class="footer-actions">
+          <a href="https://www.linkedin.com/in/ahd-mohamed-491626320?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="footer-link-badge">
+            LinkedIn ↗
+          </a>
+          <a href="https://wa.me/201142547578" target="_blank" rel="noopener noreferrer" class="footer-link-badge">
+            WhatsApp ↗
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright Sub-bar -->
+    <div class="footer-bottom">
+      <div class="container bottom-container">
+        <p class="copyright-text" data-i18n="footer.copyright">
+          &copy; <span id="current-year">2026</span> Ahd Mohamed Abdelsalam. All rights reserved.
+        </p>
+        <p class="footer-tagline" data-i18n="hero.tagline">
+          “I turn ideas into visual stories that move.”
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================== -->
+  <!-- ACCESSIBLE PROJECT MODAL / LIGHTBOX                      -->
+  <!-- ======================================================== -->
+  <div class="project-modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-dialog">
+      <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Close Project Preview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-content">
+        <!-- Media Container (Image or Video) -->
+        <div class="modal-media-wrap" id="modal-media-wrap">
+          <!-- Dynamically populated via JavaScript -->
+        </div>
+
+        <!-- Metadata & Storytelling Container -->
+        <div class="modal-info-wrap">
+          <span class="modal-category" id="modal-category"></span>
+          <h3 class="modal-title" id="modal-title"></h3>
+          <p class="modal-desc" id="modal-desc"></p>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary modal-close-cta" id="modal-close-cta" data-i18n="modal.close">
+              Close Preview
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vanilla JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
